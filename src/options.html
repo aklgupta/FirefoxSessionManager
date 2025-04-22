@@ -8,12 +8,33 @@
             background: #374851;
             color: #f0f0f0;
         }
+        table, th, td {
+            border: 1px solid;
+            border-collapse: collapse;
+            text-wrap: nowrap;
+            overflow: clip;
+        }
+        td {
+            max-width: 100px;
+        }
+        tbody> tr:nth-child(odd) {
+            background-color: #4b6270;
+        }
+        tbody > tr:hover {
+            background-color: rgba(162, 242, 255, 0.5);
+        }
     </style>
+    <script src="options.js"></script>
 </head>
 <body>
 
-<h1>Hi</h1>
-<script src="options.js"></script>
+<h1>Lean Session Manager</h1>
+<table>
+    <thead>
+    <tr id="header"></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+</table>
 
 </body>
 </html>
