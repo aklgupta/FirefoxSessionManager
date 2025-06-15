@@ -20,12 +20,16 @@ const properties = [
 ];
 
 window.onload = () => {
+    RenderCurrentSession();
+}
+
+function RenderCurrentSession() {
     let header = document.getElementById("header");
     header.innerHTML += `<th>S. no.</th>`;
     properties.forEach(x => {
         header.innerHTML += `<th>${x}</th>`;
     });
-    
+
     // TODO: Need to show live list
     browser.tabs.query({}, tabs => {
         let tbody = document.getElementById("tbody");
@@ -42,7 +46,7 @@ window.onload = () => {
     });
 
     return;
-    
+
     browser.storage.local.get().then(x => {
         document.body.innerText += ` =>
 ${JSON.stringify(x)}
@@ -50,5 +54,4 @@ ${JSON.stringify(x)}
     }).catch(err => {
         document.body.innerText = ` ERR => ${JSON.stringify(err)}`;
     });
-
 }
