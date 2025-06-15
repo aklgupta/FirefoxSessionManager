@@ -3,6 +3,7 @@
 const properties = [
     "id",
     "windowId",
+    "groupId",
     "active",
     "pinned",
     "hidden",
