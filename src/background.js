@@ -37,7 +37,7 @@ UpdateTabCounter(-1, false);
 
 
 function UpdateSession(){
-
+	console.log("Update session");
 }
 
 browser.tabs.onCreated.addListener((_,__) => UpdateSession());
@@ -50,7 +50,7 @@ browser.tabs.onReplaced.addListener((_,__) => UpdateSession());
 
 
 function OnUpdate(tabId, changeInfo, tabInfo){
-	
+	console.log("Update session");
 }
 
 browser.tabs.onUpdated.addListener(
@@ -65,7 +65,7 @@ browser.tabs.onUpdated.addListener(
 );
 
 function OnSessionChanged(){
-	
+	console.log("Session Changed");
 }
 
 browser.sessions.onChanged.addListener(OnSessionChanged);
