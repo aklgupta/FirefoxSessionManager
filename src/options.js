@@ -3,6 +3,7 @@
 const properties = [
     "id",
     "windowId",
+    "index",
     "groupId",
     "active",
     "pinned",
@@ -29,7 +30,8 @@ window.onload = () => {
     browser.tabs.query({}, tabs => {
         let tbody = document.getElementById("tbody");
         let sno = 0;
-        tabs.forEach(tab => {
+        tabs
+        .forEach(tab => {
             let row = document.createElement("tr");
             row.innerHTML = `<td>${++sno}</td>`;
             properties.forEach(x => {
