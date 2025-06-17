@@ -63,9 +63,3 @@ browser.tabs.onUpdated.addListener(
 		]
 	}
 );
-
-function OnSessionChanged(){
-	console.log("[FSM] Session Changed - session thingy");
-}
-
-browser.sessions.onChanged.addListener(OnSessionChanged);
