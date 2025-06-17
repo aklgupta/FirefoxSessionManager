@@ -50,7 +50,7 @@ browser.tabs.onReplaced.addListener((_,__) => UpdateSession("onReplaced"));
 
 
 function OnUpdate(tabId, changeInfo, tabInfo){
-	console.log(`[FSM] Update session - On Update - ${changeInfo.pinned}|${changeInfo.status}|${changeInfo.url}`);
+	console.log(`[FSM] Update session - On Update - ${changeInfo.pinned ? changeInfo.pinned : "-"}|${changeInfo.status ? changeInfo.status : "-"}|${changeInfo.url ? changeInfo.url : "-"}`);
 }
 
 browser.tabs.onUpdated.addListener(
