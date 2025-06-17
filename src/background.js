@@ -1,5 +1,7 @@
 "use strict"
 
+
+// Options Page
 browser.browserAction.onClicked.addListener(() => {
 	browser.tabs.create({
 		url: browser.runtime.getURL("options.html")
@@ -25,8 +27,6 @@ function UpdateTabCounter(tabId, isOnRemoved){
 			browser.browserAction.setBadgeText({text: length.toString()});
 		});
 }
-
-
 
 browser.tabs.onCreated.addListener(tabId => UpdateTabCounter(tabId, false));
 browser.tabs.onRemoved.addListener(tabId => UpdateTabCounter(tabId, true));
