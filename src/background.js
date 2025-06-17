@@ -36,21 +36,21 @@ UpdateTabCounter(-1, false);
 
 
 
-function UpdateSession(){
-	console.log("Update session");
+function UpdateSession(msg){
+	console.log(`[FSM] Update session - ${msg}`);
 }
 
-browser.tabs.onCreated.addListener((_,__) => UpdateSession());
-browser.tabs.onRemoved.addListener((_,__) => UpdateSession());
-browser.tabs.onActivated.addListener(_ => UpdateSession());
-browser.tabs.onAttached.addListener((_,__) => UpdateSession());
-browser.tabs.onDetached.addListener((_,__) => UpdateSession());
-browser.tabs.onMoved.addListener((_,__) => UpdateSession());
-browser.tabs.onReplaced.addListener((_,__) => UpdateSession());
+browser.tabs.onCreated.addListener((_,__) => UpdateSession("onCreate"));
+browser.tabs.onRemoved.addListener((_,__) => UpdateSession("onRemove"));
+browser.tabs.onActivated.addListener(_ => UpdateSession("onActivate"));
+browser.tabs.onAttached.addListener((_,__) => UpdateSession("onAttached"));
+browser.tabs.onDetached.addListener((_,__) => UpdateSession("onDetached"));
+browser.tabs.onMoved.addListener((_,__) => UpdateSession("onMoved"));
+browser.tabs.onReplaced.addListener((_,__) => UpdateSession("onReplaced"));
 
 
 function OnUpdate(tabId, changeInfo, tabInfo){
-	console.log("Update session");
+	console.log(`[FSM] Update session - On Update - ${changeInfo.pinned}|${changeInfo.status}|${changeInfo.url}`);
 }
 
 browser.tabs.onUpdated.addListener(
@@ -65,7 +65,7 @@ browser.tabs.onUpdated.addListener(
 );
 
 function OnSessionChanged(){
-	console.log("Session Changed");
+	console.log("[FSM] Session Changed - session thingy");
 }
 
 browser.sessions.onChanged.addListener(OnSessionChanged);
