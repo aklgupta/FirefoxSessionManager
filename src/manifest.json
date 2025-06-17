@@ -5,6 +5,7 @@
   "description": "A lean Session Manager",
   "permissions": [
     "storage",
+    "sessions",
     "tabs"
   ],
   "background": {
