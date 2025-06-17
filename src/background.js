@@ -36,6 +36,8 @@ UpdateTabCounter(-1, false);
 
 
 
+// Session Related Events listeners and methods
+
 function UpdateSession(msg){
 	console.log(`[FSM] Update session - ${msg}`);
 }
