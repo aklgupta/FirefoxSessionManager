@@ -39,7 +39,8 @@ UpdateTabCounter(-1, false);
 // Session Related Events listeners and methods
 
 function UpdateSession(msg){
-	console.log(`[FSM] Update session - ${msg}`);
+	// console.log(`[FSM] Update session - ${msg}`);
+	SaveSession();
 }
 
 browser.tabs.onCreated.addListener((_,__) => UpdateSession("onCreate"));
@@ -52,7 +53,8 @@ browser.tabs.onReplaced.addListener((_,__) => UpdateSession("onReplaced"));
 
 
 function OnUpdate(tabId, changeInfo, tabInfo){
-	console.log(`[FSM] Update session - On Update - ${changeInfo.pinned ? changeInfo.pinned : "-"}|${changeInfo.status ? changeInfo.status : "-"}|${changeInfo.url ? changeInfo.url : "-"}`);
+	// console.log(`[FSM] Update session - On Update - ${changeInfo.pinned ? changeInfo.pinned : "-"}|${changeInfo.status ? changeInfo.status : "-"}|${changeInfo.url ? changeInfo.url : "-"}`);
+	SaveSession();
 }
 
 browser.tabs.onUpdated.addListener(
@@ -67,6 +69,25 @@ browser.tabs.onUpdated.addListener(
 );
 
 
+
+const properties = [
+	"id",
+	"windowId",
+	"index",
+	"groupId",
+	"active",
+	"pinned",
+	"hidden",
+	"discarded",
+	"audible",
+	"autoDiscardable",
+	"autoDiscardable",
+	"isInReaderMode",
+	"successorTabId",
+	"url",
+	"title",
+	"favIconUrl",
+];
 function SaveSession(){
 	let session = [];
 	browser.tabs.query({})
