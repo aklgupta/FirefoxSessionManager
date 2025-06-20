@@ -52,6 +52,8 @@ browser.tabs.onMoved.addListener((_,__) => UpdateSession("onMoved"));
 browser.tabs.onReplaced.addListener((_,__) => UpdateSession("onReplaced"));
 
 
+
+// TODO: Prevent extra calls
 function OnUpdate(tabId, changeInfo, tabInfo){
 	// console.log(`[FSM] Update session - On Update - ${changeInfo.pinned ? changeInfo.pinned : "-"}|${changeInfo.status ? changeInfo.status : "-"}|${changeInfo.url ? changeInfo.url : "-"}`);
 	SaveSession();
@@ -67,7 +69,6 @@ browser.tabs.onUpdated.addListener(
 		]
 	}
 );
-
 
 
 const properties = [
@@ -88,6 +89,8 @@ const properties = [
 	"title",
 	"favIconUrl",
 ];
+
+
 function SaveSession(){
 	let session = [];
 	browser.tabs.query({})
