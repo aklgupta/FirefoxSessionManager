@@ -44,7 +44,7 @@ function UpdateSession(msg){
 
 browser.tabs.onCreated.addListener((_,__) => UpdateSession("onCreate"));
 browser.tabs.onRemoved.addListener((_,__) => UpdateSession("onRemove"));
-browser.tabs.onActivated.addListener(_ => UpdateSession("onActivate"));
+// browser.tabs.onActivated.addListener(_ => UpdateSession("onActivate"));
 browser.tabs.onAttached.addListener((_,__) => UpdateSession("onAttached"));
 browser.tabs.onDetached.addListener((_,__) => UpdateSession("onDetached"));
 browser.tabs.onMoved.addListener((_,__) => UpdateSession("onMoved"));
