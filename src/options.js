@@ -45,13 +45,10 @@ function RenderCurrentSession() {
         });
     });
 
-    return;
 
     browser.storage.local.get().then(x => {
-        document.body.innerText += ` =>
-${JSON.stringify(x)}
-`;
+        document.body.innerHTML += (`<p>${JSON.stringify(x)}</p>`);
     }).catch(err => {
-        document.body.innerText = ` ERR => ${JSON.stringify(err)}`;
+        document.body.innerHtml = ` ERR => ${JSON.stringify(err)}`;
     });
 }
