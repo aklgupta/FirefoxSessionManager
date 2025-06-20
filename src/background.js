@@ -65,3 +65,23 @@ browser.tabs.onUpdated.addListener(
 		]
 	}
 );
+
+
+function SaveSession(){
+	let session = [];
+	browser.tabs.query({})
+	.then(tabs => {
+		tabs.forEach(tab => {
+			let tabData = {};
+			properties.forEach(x => {
+				tabData[x] = tab[x];
+			});
+			session.push(tabData);
+		});
+	})
+	.then(() => {
+		browser.storage.local.set({"session": session}).then(_ => {
+			console.log(`[FSM] Session stored successfully saved`);
+		});
+	})
+}
